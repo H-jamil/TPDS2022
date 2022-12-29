@@ -614,7 +614,60 @@ public class OptimalDataTransfer {
 			DecisionTreeAlgorithms testingDecisionTree = new DecisionTreeAlgorithms(testBedName, datasets, TCPBuf, httpServer, link, maxChannels, algInterval, initAlgInterval, logger, decisionTreeHashTableFileName, decisionTreeHashTableSize, governor, totalNumPhysicalCores, totalNumLogicalCores);
 			//testingDecisionTree.testDecisionTree(serverIP);
 			testingDecisionTree.testDecisionTree_Wisc(serverIP);
-		}else if (algName.equals("testCrossLayerHLA_maxThroughput")) {
+		}
+		else if (algName.equals("testWebServer")) {
+			/*
+			* 13 SHARED PARAMETERS (0 - 12)
+			* 0. Testbed: name of testbed either Chameleon or CloudLab
+		 	* 1. algName: name of algorithm
+		 	* 2. htmlCount: how many files from html dataset
+		 	* 3. imageCount: how many files from image dataset
+		 	* 4. videoCount: how many files from video dataset
+		 	* 5. serverIP
+		 	* 6. port
+		 	* 7. bandwidth: in Mbps
+		 	* 8. RTT: in ms
+		 	* 9. TCPMaxBuf: in MB
+		 	* 10. Max Channels
+		 	* 11 Alg Interval
+		 	* 12. outputLog --> after completing transfer (Writes the Average Throughput)
+		 	******************************************************************************
+		 	* PARAMETERS SPECIFIC TO TEST DECISION TREE (13 -
+		 	* 13. Initial Alg Interval - 1st alg interval (sampling) in seconds. Used for inittial parameters
+		 	* 14. Name of Decision Tree Instantaneous Output Log File - Written instantaneously to to file at regular intervals
+		 	* 15. DecisionTreeHashTable FileName and Path
+		 	* 16. DecisionTreeHashTable Size: Different for Testbed, datatype combination
+		 	* 17. totalNumPhysicalCores
+		 	* 18. totalNumLogicalCores
+		 	* 19. governor
+		 	* Note Dataset.getName - gets the dataset name: html, image or video
+		 	* HTML_Count, Image_count and video_count passed into logger
+		 	* just pass in the dataset name: html, image or video to see which count to log
+		 	* does the count change in the logger
+		  }
+			*/
+			int initAlgInterval = Integer.valueOf(args[13]);
+			System.out.println("**** testDecisionTree: initAlgInterval (sec): ARG[13] = " + initAlgInterval + " *******");
+			String decisionTreeInstOutputFile = args[14];
+			System.out.println("**** testDecisionTree: decisionTreeInstOutputFile: ARG[14] = " + decisionTreeInstOutputFile + " *******");
+			String decisionTreeHashTableFileName = args[15];
+			System.out.println("**** testDecisionTree: decisionTreeHashTableFileName: ARG[15] = " + decisionTreeHashTableFileName + " *******");
+			int decisionTreeHashTableSize = Integer.valueOf(args[16]);
+			System.out.println("**** testDecisionTree: decisionTreeHashTableSize: ARG[16] = " + decisionTreeHashTableSize + " *******");
+			int totalNumPhysicalCores = Integer.valueOf(args[17]);
+			System.out.println("**** testDecisionTree: totalNumPhysicalCores: ARG[17] = " + totalNumPhysicalCores + " *******");
+			int totalNumLogicalCores = Integer.valueOf(args[18]);
+			System.out.println("**** testDecisionTree: totalNumLogicalCores: ARG[18] = " + totalNumLogicalCores + " *******");
+			String governor = args[19];
+			System.out.println("**** testDecisionTree: governor: ARG[19] = " + governor + " *******");
+
+
+			Logger logger = new Logger(outputLog, testBedName, decisionTreeInstOutputFile, algName, htmlCount, htmlSize, imageCount, imageSize, videoCount, videoSize);
+			DecisionTreeAlgorithms testingDecisionTree = new DecisionTreeAlgorithms(testBedName, datasets, TCPBuf, httpServer, link, maxChannels, algInterval, initAlgInterval, logger, decisionTreeHashTableFileName, decisionTreeHashTableSize, governor, totalNumPhysicalCores, totalNumLogicalCores);
+			testingDecisionTree.testDecisionTree(serverIP);
+		}
+
+		else if (algName.equals("testCrossLayerHLA_maxThroughput")) {
 			/*
 			* 13 SHARED PARAMETERS (0 - 12)
 			* 0. Testbed: name of testbed either Chameleon or CloudLab

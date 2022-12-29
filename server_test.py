@@ -14,4 +14,4 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             print(data)
             if not data:
                 break
-            conn.sendall(b'3-2-1\n')
+            conn.sendall(b'30-28-110\n')

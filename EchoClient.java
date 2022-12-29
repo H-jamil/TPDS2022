@@ -1,17 +1,18 @@
 import java.io.*;
 import java.net.*;
+import java.util.*;
 
 public class EchoClient {
     public static void main(String[] args) throws IOException {
 
-        if (args.length != 2) {
-            System.err.println(
-                "Usage: java EchoClient <host name> <port number>");
-            System.exit(1);
-        }
+        // if (args.length != 2) {
+        //     System.err.println(
+        //         "Usage: java EchoClient <host name> <port number>");
+        //     System.exit(1);
+        // }
 
-        String hostName = args[0];
-        int portNumber = Integer.parseInt(args[1]);
+        String hostName = "127.0.0.1";
+        int portNumber = 65432;
 
         try (
             Socket echoSocket = new Socket(hostName, portNumber);
@@ -25,12 +26,20 @@ public class EchoClient {
                     new InputStreamReader(System.in))
         ) {
             String userInput;
-            // String line = "";
-            // while (!line.equals("Over"))
             while ((userInput = stdIn.readLine()) != null) {
                 out.println(userInput);
                 String value_=in.readLine();
-                System.out.println(value_);
+                //following line print the value send from Python server
+                String name = value_.getClass().getName();
+                value_ = value_.replaceAll("[^0-9]+", " ");
+                System.out.println(value_+" "+name);
+                ArrayList<String> list=new ArrayList<>(Arrays.asList(value_.trim().split(" ")));
+                name = list.getClass().getName();
+                System.out.println(list+" "+name);
+                int cc = Integer.parseInt(list.get(0));
+                int p  = Integer.parseInt(list.get(1));
+                int pp = Integer.parseInt(list.get(2));
+                System.out.println(cc+" "+((Object)cc).getClass().getName()+" "+p+" "+((Object)p).getClass().getName()+" "+ pp+" "+((Object)pp).getClass().getName());
                 if (userInput.equals("Over")){
                   System.out.println("Input: "+ userInput);
                   try{
