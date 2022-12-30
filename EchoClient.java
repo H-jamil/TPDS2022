@@ -27,6 +27,7 @@ public class EchoClient {
         ) {
             String userInput;
             while ((userInput = stdIn.readLine()) != null) {
+                System.out.println(userInput+" "+userInput.getClass().getName());
                 out.println(userInput);
                 String value_=in.readLine();
                 //following line print the value send from Python server

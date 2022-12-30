@@ -34,7 +34,8 @@ for i in range(2):
     #Decision Tree - HTML
     cmd_prefix = 'sudo java -d64 -Xms15g -Xmx15g -XX:MaxDirectMemorySize=50G -cp .:lib/*:bin/'
     testBedName = 'cloudlab'
-    algorithm = 'testDecisionTree'
+    # algorithm = 'testDecisionTree'
+    algorithm='testWebServer'
     # dataset = NUM HTML FILES, NUM IMAGE FILES, NUM VIDEO FILES
     HTML_dataset = '20000 0 0'  # HTML: 20000 FILES, IMAGE:0 FILES, VIDEO: 0 Files
     medium_dataset = '0 5000 0'  # HTML:0 FILES, IMAGE: 5000 FILES, VIDEO: 0 Files
@@ -45,9 +46,9 @@ for i in range(2):
     tcp_buf = '4.5'  # MB
     max_channels = '32'
     alg_interval = '30'  # Seconds
-    output_log = 'output/CloudLab_D_Tree_Avg_Data_Transfer_Dec_28_2022.csv'
+    output_log = 'output/CloudLab_testWebServer_Avg_Data_Transfer_Dec_28_2022.csv'
     init_alg_interval = '10'  # Seconds
-    inst_d_tree_output_log = '/mnt/ramdisk/decisionTree_cloudlab_InstLog.csv'
+    inst_d_tree_output_log = '/mnt/ramdisk/testWebServer_cloudlab_InstLog.csv'
     decisionTreeHashTableName = "input/D_Tree_HashFiles/CloudLab/CloudLab_Image_D_Tree_Hash_File.csv"
     decisionTreeHashTableSize = '120'
     totalNumPhysicalCores = '10'

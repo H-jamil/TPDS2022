@@ -13,7 +13,7 @@ import network.Link;
 public class OptimalDataTransfer {
 
 	public enum AlgType {
-		DecisionTree, DrRodolphHLA, LuigiHeuristic
+		DecisionTree, DrRodolphHLA, LuigiHeuristic,testWebServer
 	}
 
 	public static void main(String[] args) throws InterruptedException {
@@ -490,7 +490,7 @@ public class OptimalDataTransfer {
 		 	* HTML_Count, Image_count and video_count passed into logger
 		 	* just pass in the dataset name: html, image or video to see which count to log
 		 	* does the count change in the logger
-		}
+		  * }
 			*/
 			int initAlgInterval = Integer.valueOf(args[13]);
 			System.out.println("**** testDecisionTree: initAlgInterval (sec): ARG[13] = " + initAlgInterval + " *******");
@@ -647,24 +647,24 @@ public class OptimalDataTransfer {
 		  }
 			*/
 			int initAlgInterval = Integer.valueOf(args[13]);
-			System.out.println("**** testDecisionTree: initAlgInterval (sec): ARG[13] = " + initAlgInterval + " *******");
+			System.out.println("**** testWebServer: initAlgInterval (sec): ARG[13] = " + initAlgInterval + " *******");
 			String decisionTreeInstOutputFile = args[14];
-			System.out.println("**** testDecisionTree: decisionTreeInstOutputFile: ARG[14] = " + decisionTreeInstOutputFile + " *******");
+			System.out.println("**** testWebServer: decisionTreeInstOutputFile: ARG[14] = " + decisionTreeInstOutputFile + " *******");
 			String decisionTreeHashTableFileName = args[15];
-			System.out.println("**** testDecisionTree: decisionTreeHashTableFileName: ARG[15] = " + decisionTreeHashTableFileName + " *******");
+			System.out.println("**** testWebServer: decisionTreeHashTableFileName: ARG[15] = " + decisionTreeHashTableFileName + " *******");
 			int decisionTreeHashTableSize = Integer.valueOf(args[16]);
-			System.out.println("**** testDecisionTree: decisionTreeHashTableSize: ARG[16] = " + decisionTreeHashTableSize + " *******");
+			System.out.println("**** testWebServer: decisionTreeHashTableSize: ARG[16] = " + decisionTreeHashTableSize + " *******");
 			int totalNumPhysicalCores = Integer.valueOf(args[17]);
-			System.out.println("**** testDecisionTree: totalNumPhysicalCores: ARG[17] = " + totalNumPhysicalCores + " *******");
+			System.out.println("**** testWebServer: totalNumPhysicalCores: ARG[17] = " + totalNumPhysicalCores + " *******");
 			int totalNumLogicalCores = Integer.valueOf(args[18]);
-			System.out.println("**** testDecisionTree: totalNumLogicalCores: ARG[18] = " + totalNumLogicalCores + " *******");
+			System.out.println("**** testWebServer: totalNumLogicalCores: ARG[18] = " + totalNumLogicalCores + " *******");
 			String governor = args[19];
-			System.out.println("**** testDecisionTree: governor: ARG[19] = " + governor + " *******");
+			System.out.println("**** testWebServer: governor: ARG[19] = " + governor + " *******");
 
 
 			Logger logger = new Logger(outputLog, testBedName, decisionTreeInstOutputFile, algName, htmlCount, htmlSize, imageCount, imageSize, videoCount, videoSize);
-			DecisionTreeAlgorithms testingDecisionTree = new DecisionTreeAlgorithms(testBedName, datasets, TCPBuf, httpServer, link, maxChannels, algInterval, initAlgInterval, logger, decisionTreeHashTableFileName, decisionTreeHashTableSize, governor, totalNumPhysicalCores, totalNumLogicalCores);
-			testingDecisionTree.testDecisionTree(serverIP);
+			WebServerAlgorithms testingWebServer = new WebServerAlgorithms(testBedName, datasets, TCPBuf, httpServer, link, maxChannels, algInterval, initAlgInterval, logger, decisionTreeHashTableFileName, decisionTreeHashTableSize, governor, totalNumPhysicalCores, totalNumLogicalCores);
+			testingWebServer.testWebServer(serverIP);
 		}
 
 		else if (algName.equals("testCrossLayerHLA_maxThroughput")) {
